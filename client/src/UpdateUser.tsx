@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import api from "./api";
+import api from "./api.js";
 
 function UpdateUser() {
   const { id } = useParams();
@@ -24,7 +24,7 @@ function UpdateUser() {
   }, [id]);
 
   // Update user
-  const Update = (e) => {
+  const Update = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     api

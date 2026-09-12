@@ -2,22 +2,35 @@ import api from "./api";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+
+interface User {
+  _id: string;
+  name: string;
+  email: string;
+  age: number;
+}
+
 function Users() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     api
       .get("/")
-      .then((result) => setUsers(result.data))
+      .then((result) => {
+        console.log("Result:", result);
+        console.log("Data:", result.data);
+        console.log("Is Array:", Array.isArray(result.data));
+        setUsers(result.data);
+      })
       .catch((err) => console.log(err));
-  });
+  }, []);
 
-  const handleDelete =(id) =>{
+  const handleDelete = (id: string) => {
     api
       .delete("/deleteUser/" + id)
-      .then((res) => console.log(res))    // or {console.log(res)    window.location.reload}
+      .then((res) => console.log(res)) // or {console.log(res)    window.location.reload}
       .catch((err) => console.log(err));
-  }
+  };
   return (
     <div className="d-flex vh-100 bg-secondary justify-content-center align-items-center">
       <div className="w-50 bg-white rounded p-3">
