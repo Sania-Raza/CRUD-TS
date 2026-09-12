@@ -9,6 +9,6 @@
     "skipLibCheck": true,
     "outDir": "./dist"
   },
-  "include": ["src","index.ts", "models/**/*.ts"],
+  "include": ["index.ts", "models/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }
