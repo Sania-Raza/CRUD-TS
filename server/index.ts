@@ -89,6 +89,10 @@ app.delete("/deleteUser/:id", (req: Request, res: Response) => {
     .catch((err) => res.json(err));
 });
 
-app.listen(PORT, () => {
-  console.log(`server is running at port ${PORT}`);
-});
+export default app;
+
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`server is running at port ${PORT}`);
+  });
+}
