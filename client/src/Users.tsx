@@ -32,46 +32,48 @@ function Users() {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="d-flex vh-100 bg-secondary justify-content-center align-items-center">
-      <div className="w-50 bg-white rounded p-3">
-        <Link to="/create" className="btn btn-info">
+    <div className="d-flex min-vh-100 bg-secondary justify-content-center align-items-center py-4">
+      <div className="w-100 w-md-75 w-lg-50 bg-white rounded p-3 mx-2">
+        <Link to="/create" className="btn btn-info mb-2">
           Add +
         </Link>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Age</th>
-              <th>   Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => {
-              return (
-                <tr>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.age}</td>
-                  <td>
-                    <Link
-                      to={`/update/${user._id}`}
-                      className="btn btn-warning"
-                    >
-                      Update
-                    </Link>
-                    <button
-                      className="btn btn-danger mx-3 "
-                      onClick={() => handleDelete(user._id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="table-responsive">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => {
+                return (
+                  <tr key={user._id}>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.age}</td>
+                    <td>
+                      <Link
+                        to={`/update/${user._id}`}
+                        className="btn btn-warning"
+                      >
+                        Update
+                      </Link>
+                      <button
+                        className="btn btn-danger mx-3 "
+                        onClick={() => handleDelete(user._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
