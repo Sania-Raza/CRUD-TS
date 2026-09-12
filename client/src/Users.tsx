@@ -55,18 +55,20 @@ function Users() {
                     <td>{user.email}</td>
                     <td>{user.age}</td>
                     <td>
-                      <Link
-                        to={`/update/${user._id}`}
-                        className="btn btn-warning"
-                      >
-                        Update
-                      </Link>
-                      <button
-                        className="btn btn-danger mx-3 "
-                        onClick={() => handleDelete(user._id)}
-                      >
-                        Delete
-                      </button>
+                     <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2">
+                        <Link
+                          to={`/update/${user._id}`}
+                          className="btn btn-warning"
+                        >
+                          Update
+                        </Link>
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => handleDelete(user._id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 );
